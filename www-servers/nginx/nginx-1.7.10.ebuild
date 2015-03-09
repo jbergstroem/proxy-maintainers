@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -36,7 +36,7 @@ HTTP_HEADERS_MORE_MODULE_URI="https://github.com/agentzh/headers-more-nginx-modu
 HTTP_HEADERS_MORE_MODULE_WD="${WORKDIR}/headers-more-nginx-module-${HTTP_HEADERS_MORE_MODULE_PV}"
 
 # http_cache_purge (http://labs.frickle.com/nginx_ngx_cache_purge/, BSD-2 license)
-HTTP_CACHE_PURGE_MODULE_PV="2.2"
+HTTP_CACHE_PURGE_MODULE_PV="2.3"
 HTTP_CACHE_PURGE_MODULE_P="ngx_http_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
 HTTP_CACHE_PURGE_MODULE_URI="http://labs.frickle.com/files/ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}.tar.gz"
 HTTP_CACHE_PURGE_MODULE_WD="${WORKDIR}/ngx_cache_purge-${HTTP_CACHE_PURGE_MODULE_PV}"
@@ -48,21 +48,21 @@ HTTP_SLOWFS_CACHE_MODULE_URI="http://labs.frickle.com/files/ngx_slowfs_cache-${H
 HTTP_SLOWFS_CACHE_MODULE_WD="${WORKDIR}/ngx_slowfs_cache-${HTTP_SLOWFS_CACHE_MODULE_PV}"
 
 # http_fancyindex (https://github.com/aperezdc/ngx-fancyindex, BSD license)
-HTTP_FANCYINDEX_MODULE_PV="0.3.4"
+HTTP_FANCYINDEX_MODULE_PV="0.3.5"
 HTTP_FANCYINDEX_MODULE_P="ngx_http_fancyindex-${HTTP_FANCYINDEX_MODULE_PV}"
 HTTP_FANCYINDEX_MODULE_URI="https://github.com/aperezdc/ngx-fancyindex/archive/v${HTTP_FANCYINDEX_MODULE_PV}.tar.gz"
 HTTP_FANCYINDEX_MODULE_WD="${WORKDIR}/ngx-fancyindex-${HTTP_FANCYINDEX_MODULE_PV}"
 
 # http_lua (https://github.com/openresty/lua-nginx-module, BSD license)
-HTTP_LUA_MODULE_PV="0.9.13"
+HTTP_LUA_MODULE_PV="0.9.15"
 HTTP_LUA_MODULE_P="ngx_http_lua-${HTTP_LUA_MODULE_PV}"
 HTTP_LUA_MODULE_URI="https://github.com/openresty/lua-nginx-module/archive/v${HTTP_LUA_MODULE_PV}.tar.gz"
 HTTP_LUA_MODULE_WD="${WORKDIR}/lua-nginx-module-${HTTP_LUA_MODULE_PV}"
 
-# http_auth_pam (http://web.iti.upv.es/~sto/nginx/, BSD-2 license)
-HTTP_AUTH_PAM_MODULE_PV="1.3"
+# http_auth_pam (http://web.iti.upv.es/~sto/nginx/, https://github.com/stogh/ngx_http_auth_pam_module/, BSD-2 license)
+HTTP_AUTH_PAM_MODULE_PV="1.4"
 HTTP_AUTH_PAM_MODULE_P="ngx_http_auth_pam-${HTTP_AUTH_PAM_MODULE_PV}"
-HTTP_AUTH_PAM_MODULE_URI="http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-${HTTP_AUTH_PAM_MODULE_PV}.tgz"
+HTTP_AUTH_PAM_MODULE_URI="https://github.com/stogh/ngx_http_auth_pam_module/archive/v${HTTP_AUTH_PAM_MODULE_PV}.tar.gz"
 HTTP_AUTH_PAM_MODULE_WD="${WORKDIR}/ngx_http_auth_pam_module-${HTTP_AUTH_PAM_MODULE_PV}"
 
 # http_upstream_check (https://github.com/yaoweibin/nginx_upstream_check_module, BSD license)
@@ -103,8 +103,8 @@ HTTP_ECHO_MODULE_WD="${WORKDIR}/echo-nginx-module-${HTTP_ECHO_MODULE_PV}"
 
 # mod_security for nginx (https://modsecurity.org/, Apache-2.0)
 # keep the MODULE_P here consistent with upstream to avoid tarball duplication
-HTTP_SECURITY_MODULE_PV="2.8.0"
-HTTP_SECURITY_MODULE_P="modsecurity-apache_${HTTP_SECURITY_MODULE_PV}"
+HTTP_SECURITY_MODULE_PV="2.9.0"
+HTTP_SECURITY_MODULE_P="modsecurity-${HTTP_SECURITY_MODULE_PV}"
 HTTP_SECURITY_MODULE_URI="https://www.modsecurity.org/tarball/${HTTP_SECURITY_MODULE_PV}/${HTTP_SECURITY_MODULE_P}.tar.gz"
 HTTP_SECURITY_MODULE_WD="${WORKDIR}/${HTTP_SECURITY_MODULE_P}"
 
@@ -121,9 +121,9 @@ HTTP_STICKY_MODULE_URI="https://bitbucket.org/nginx-goodies/nginx-sticky-module-
 HTTP_STICKY_MODULE_WD="${WORKDIR}/nginx-goodies-nginx-sticky-module-ng-bd312d586752"
 
 # ajp-module (https://github.com/yaoweibin/nginx_ajp_module, BSD-2)
-HTTP_AJP_MODULE_PV="0.3.0"
+HTTP_AJP_MODULE_PV="bf6cd93f2098b59260de8d494f0f4b1f11a84627"
 HTTP_AJP_MODULE_P="ngx_http_ajp_module-${HTTP_AJP_MODULE_PV}"
-HTTP_AJP_MODULE_URI="https://github.com/yaoweibin/nginx_ajp_module/archive/v${HTTP_AJP_MODULE_PV}.tar.gz"
+HTTP_AJP_MODULE_URI="https://github.com/yaoweibin/nginx_ajp_module/archive/${HTTP_AJP_MODULE_PV}.tar.gz"
 HTTP_AJP_MODULE_WD="${WORKDIR}/nginx_ajp_module-${HTTP_AJP_MODULE_PV}"
 
 # mogilefs-module (http://www.grid.net.ru/nginx/mogilefs.en.html, BSD-2)
@@ -162,7 +162,7 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS=""
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif fastcgi
 geo gzip limit_req limit_conn map memcached proxy referer rewrite scgi ssi
@@ -211,8 +211,8 @@ done
 CDEPEND="
 	pcre? ( >=dev-libs/libpcre-4.2 )
 	pcre-jit? ( >=dev-libs/libpcre-8.20[jit] )
-	ssl? ( dev-libs/openssl )
-	http-cache? ( userland_GNU? ( dev-libs/openssl ) )
+	ssl? ( dev-libs/openssl:= )
+	http-cache? ( userland_GNU? ( dev-libs/openssl:= ) )
 	nginx_modules_http_geoip? ( dev-libs/geoip )
 	nginx_modules_http_gunzip? ( sys-libs/zlib )
 	nginx_modules_http_gzip? ( sys-libs/zlib )
@@ -220,10 +220,10 @@ CDEPEND="
 	nginx_modules_http_image_filter? ( media-libs/gd[jpeg,png] )
 	nginx_modules_http_perl? ( >=dev-lang/perl-5.8 )
 	nginx_modules_http_rewrite? ( >=dev-libs/libpcre-4.2 )
-	nginx_modules_http_secure_link? ( userland_GNU? ( dev-libs/openssl ) )
-	nginx_modules_http_spdy? ( >=dev-libs/openssl-1.0.1c )
+	nginx_modules_http_secure_link? ( userland_GNU? ( dev-libs/openssl:= ) )
+	nginx_modules_http_spdy? ( >=dev-libs/openssl-1.0.1c:= )
 	nginx_modules_http_xslt? ( dev-libs/libxml2 dev-libs/libxslt )
-	nginx_modules_http_lua? ( !luajit? ( dev-lang/lua ) luajit? ( dev-lang/luajit ) )
+	nginx_modules_http_lua? ( !luajit? ( dev-lang/lua:= ) luajit? ( dev-lang/luajit:= ) )
 	nginx_modules_http_auth_pam? ( virtual/pam )
 	nginx_modules_http_metrics? ( dev-libs/yajl )
 	nginx_modules_http_dav_ext? ( dev-libs/expat )
@@ -492,11 +492,11 @@ src_configure() {
 		--with-cc-opt="-I${EROOT}usr/include" \
 		--with-ld-opt="-L${EROOT}usr/$(get_libdir)" \
 		--http-log-path="${EPREFIX}"/var/log/${PN}/access_log \
-		--http-client-body-temp-path="${EPREFIX}/${NGINX_HOME_TMP}"/client \
-		--http-proxy-temp-path="${EPREFIX}/${NGINX_HOME_TMP}"/proxy \
-		--http-fastcgi-temp-path="${EPREFIX}/${NGINX_HOME_TMP}"/fastcgi \
-		--http-scgi-temp-path="${EPREFIX}/${NGINX_HOME_TMP}"/scgi \
-		--http-uwsgi-temp-path="${EPREFIX}/${NGINX_HOME_TMP}"/uwsgi \
+		--http-client-body-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/client \
+		--http-proxy-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/proxy \
+		--http-fastcgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/fastcgi \
+		--http-scgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/scgi \
+		--http-uwsgi-temp-path="${EPREFIX}${NGINX_HOME_TMP}"/uwsgi \
 		${myconf} || die "configure failed"
 
 	# A purely cosmetic change that makes nginx -V more readable. This can be
@@ -514,9 +514,9 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	emake DESTDIR="${D%/}" install
 
-	cp "${FILESDIR}"/nginx.conf "${ED}"/etc/nginx/nginx.conf || die
+	cp "${FILESDIR}"/nginx.conf "${ED}"etc/nginx/nginx.conf || die
 
 	newinitd "${FILESDIR}"/nginx.initd-r2 nginx
 
@@ -527,7 +527,7 @@ src_install() {
 
 	# just keepdir. do not copy the default htdocs files (bug #449136)
 	keepdir /var/www/localhost
-	rm -rf "${D}"/usr/html || die
+	rm -rf "${D}"usr/html || die
 
 	# set up a list of directories to keep
 	local keepdir_list="${NGINX_HOME_TMP}"/client
@@ -552,7 +552,7 @@ src_install() {
 
 	if use nginx_modules_http_perl; then
 		cd "${S}"/objs/src/http/modules/perl/
-		einstall DESTDIR="${D}" INSTALLDIRS=vendor
+		einstall DESTDIR="${D%/}" INSTALLDIRS=vendor
 		perl_delete_localpod
 	fi
 
@@ -578,7 +578,7 @@ src_install() {
 
 	if use nginx_modules_http_auth_pam; then
 		docinto ${HTTP_AUTH_PAM_MODULE_P}
-		dodoc "${HTTP_AUTH_PAM_MODULE_WD}"/{README,ChangeLog}
+		dodoc "${HTTP_AUTH_PAM_MODULE_WD}"/{README.md,ChangeLog}
 	fi
 
 	if use nginx_modules_http_upstream_check; then
@@ -635,9 +635,9 @@ src_install() {
 
 pkg_postinst() {
 	if use ssl; then
-		if [ ! -f "${EROOT}"/etc/ssl/${PN}/${PN}.key ]; then
+		if [ ! -f "${EROOT}"etc/ssl/${PN}/${PN}.key ]; then
 			install_cert /etc/ssl/${PN}/${PN}
-			use prefix || chown ${PN}:${PN} "${EROOT}"/etc/ssl/${PN}/${PN}.{crt,csr,key,pem}
+			use prefix || chown ${PN}:${PN} "${EROOT}"etc/ssl/${PN}/${PN}.{crt,csr,key,pem}
 		fi
 	fi
 
@@ -663,7 +663,7 @@ pkg_postinst() {
 		ewarn "Check if this is correct for your setup before restarting nginx!"
 		ewarn "This is a one-time change and will not happen on subsequent updates."
 		ewarn "Furthermore nginx' temp directories got moved to ${NGINX_HOME_TMP}"
-		chmod -f o-rwx "${EPREFIX}"/var/log/nginx "${EPREFIX}/${NGINX_HOME_TMP}"/{,client,proxy,fastcgi,scgi,uwsgi}
+		chmod -f o-rwx "${EPREFIX}"/var/log/nginx "${EPREFIX}${NGINX_HOME_TMP}"/{,client,proxy,fastcgi,scgi,uwsgi}
 	fi
 
 	# If the nginx user can't change into or read the dir, display a warning.
